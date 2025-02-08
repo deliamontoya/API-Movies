@@ -24,9 +24,10 @@ def read_root():
 @app.get("/actor/{actor_name}")
 def read_item(actor_name: str, q: Union[str, None] = None):    
     film = ETL.Films()
-    no_films = film.get_actor(actor_name)
-    print("El número de filmaciones son: ", no_films)
-    return {"item_id": actor_name, "no_films": no_films}
+    actor = film.get_actor(actor_name)
+    print({}, actor.to_string_actor_info())
+    
+    return {}, actor.to_string_actor_info()
 
 
 @app.put("/items/{item_id}")
