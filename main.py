@@ -21,13 +21,12 @@ def read_root():
     return {"API": "Movies"}
 
 
-@app.get("/actor/{actor_name}")
-def read_item(actor_name: str, q: Union[str, None] = None):    
+@app.get("/get_actor/{actor_name}")
+def read_item(actor_name: str):    
     film = ETL.Films()
-    actor = film.get_actor(actor_name)
-    print({}, actor.to_string_actor_info())
+    actor = film.get_actor(actor_name) 
+    return actor.to_string_actor_info()
     
-    return {}, actor.to_string_actor_info()
 
 
 @app.put("/items/{item_id}")
