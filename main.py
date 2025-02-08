@@ -35,6 +35,13 @@ def read_item(month: str):
     output = str(num_films)+" películas fueron estrenadas en el mes de "+month
     return output
 
+@app.get("/cantidad_filmaciones_dia/{day}")
+def read_item(day: str):    
+    film = ETL.Films()
+    num_films = film.cantidad_filmaciones_dia(day)
+    print("salimos? con el num de films = ",str(num_films))
+    output = str(num_films)+" películas fueron estrenadas en los dias "+day
+    return output
 
 @app.put("/items/{item_id}")
 def update_item(item_id: int, item: Item):
