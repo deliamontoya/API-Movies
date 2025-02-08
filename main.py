@@ -27,6 +27,13 @@ def read_item(actor_name: str):
     actor = film.get_actor(actor_name) 
     return actor.to_string_actor_info()
     
+@app.get("/cantidad_filmaciones_mes/{month}")
+def read_item(month: str):    
+    film = ETL.Films()
+    num_films = film.cantidad_filmaciones_mes(month)
+    #print("salimos? con el num de films = ",str(num_films))
+    output = str(num_films)+" películas fueron estrenadas en el mes de "+month
+    return output
 
 
 @app.put("/items/{item_id}")
