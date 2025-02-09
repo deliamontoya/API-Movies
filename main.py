@@ -50,6 +50,15 @@ def read_item(title: str):
     print("salimos? con el num de films = ",info_film.to_string())    
     return info_film.to_string()
 
+@app.get("/votos_titulo/{title}")
+def read_item(title: str):    
+    film = ETL.Films()
+    info_film = film.votos_titulo(title)
+
+    print("salimos? con el num de films = ",info_film.to_string_votos_titulo())    
+    return info_film.to_string_votos_titulo()
+
+
 @app.put("/items/{item_id}")
 def update_item(item_id: int, item: Item):
     return {"item_name": item.name, "item_id": item_id}
