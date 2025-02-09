@@ -8,14 +8,6 @@ import ETL
 app = FastAPI()
 
 
-class Item(BaseModel):
-    name: str
-    price: float
-    is_offer: Union[bool, None] = None
-
-
-
-
 @app.get("/")
 def read_root():
     return {"API": "Movies"}
@@ -58,8 +50,13 @@ def read_item(title: str):
     print("salimos? con el num de films = ",info_film.to_string_votos_titulo())    
     return info_film.to_string_votos_titulo()
 
+@app.get("/get_director/{director_name}")
+def read_item(director_name: str):    
+    film = ETL.Films()
+    director = film.get_director(director_name)
 
-@app.put("/items/{item_id}")
-def update_item(item_id: int, item: Item):
-    return {"item_name": item.name, "item_id": item_id}
+    #print("salimos? con el num de films = ",info_film.to_string_votos_titulo())    
+    return director.to_string_info_director()
+
+
 
