@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import import_ipynb
 import ETL 
+import Recomendation
 
 app = FastAPI()
 
@@ -53,10 +54,29 @@ def read_item(title: str):
 @app.get("/get_director/{director_name}")
 def read_item(director_name: str):    
     film = ETL.Films()
-    director = film.get_director(director_name)
-
-    #print("salimos? con el num de films = ",info_film.to_string_votos_titulo())    
+    director = film.get_director(director_name) 
     return director.to_string_info_director()
 
+@app.get("/get_recommendations_by_title/{title}")
+def read_item(title: str):    
+    print("hola para la recomendaion")
+    rec = Recomendation.Recomention()
+    titles = rec.get_recommendations_by_title(title)
+    print("titles: ",titles)
+    return str(titles)
 
+@app.get("/get_recommendations_by_weight/{title}")
+def read_item(title: str):    
+    print("hola para la recomendaion: get_recommendations_by_weight")
+    rec = Recomendation.Recomention()
+    titles = rec.get_recommendations_by_weigh(title)
+    print("titles: ",titles)
+    return str(titles)
 
+@app.get("/get_recommendations_by_words/{title}")
+def read_item(title: str):    
+    print("hola para la recomendaion: get_recommendations_by_words")
+    rec = Recomendation.Recomention()
+    titles = rec.get_recommendations_by_words(title)
+    print("titles: ",titles)
+    return str(titles)
