@@ -65,11 +65,11 @@ def read_item(title: str):
     print("titles: ",titles)
     return str(titles)
 
-@app.get("/get_recommendations_by_weight/{title}")
+@app.get("/recommendations/{title}")
 def read_item(title: str):    
     print("hola para la recomendaion: get_recommendations_by_weight")
     rec = Recomendation.Recomention()
-    titles = rec.get_recommendations_by_weigh(title)
+    titles = rec.recommendations(title)
     print("titles: ",titles)
     return str(titles)
 
