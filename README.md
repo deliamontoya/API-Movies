@@ -6,25 +6,25 @@
 
 **`Pre Requisitos`**: 
 
-Instalación de:
-Python
-VSCode
-GIT
-PostMan
++ Instalación de:
++ Python
++ VSCode
++ GIT
++ PostMan
 
-Cuenta activa en GitHub: https://github.com/
-Cuenta activa en render: https://dashboard.render.com/
+>> Cuenta activa en GitHub: https://github.com/
+>> Cuenta activa en render: https://dashboard.render.com/
 
 **`Librerias`**: 
 
 A su ves tener las siguientes librerias de python instaladas:
 
-numpy: Libreria requerida para las operaciones
-matplotlib: Libreria para gráficar
-pandas: libreria requerida para manipulación data
-json: libreria requerida para manejo de columnas de tipo json
-re: Libreria para el manejo de las expresiones regulares
-fastapi: Libreria requerida crear los servicios rest
++ numpy: Libreria requerida para las operaciones
++ matplotlib: Libreria para gráficar
++ pandas: libreria requerida para manipulación data
++ json: libreria requerida para manejo de columnas de tipo json
++ re: Libreria para el manejo de las expresiones regulares
++ fastapi: Libreria requerida crear los servicios rest
 
 El código se encuentra en esta ruta:
 https://github.com/deliamontoya/API-Movies
@@ -79,9 +79,29 @@ https://api-movies-kjx9.onrender.com
 
 Dentro de docs: https://api-movies-kjx9.onrender.com/docs# puede ver los servicios que estan activos
 
-![alt text](image.png)
+![alt text](image-1.png)
 
+**`Estructura del Código`**: 
 
++ funciones.ipynb
+    En este archivo, se encuentran las funciones que se van a estar utilizando en las operaciones, en su mayoria son funcioenes que convierten a un json un string, transforman fechas, dan la traducción de ingles a español de algunos datos necesarios.
+
+    A su ves tiene la funcionalidad de inicializar el dataSet
+
++ ETL.ipynb
+    Se encarga de las operaciones que interactuan directamente con los datos, dando formato, limpieza y entrega de los mismos. Se encuentra la lógica de cada una de las operaciones y se encapsulan en clases. 
+    + Actor: Tiene el numero de filmes, el nombre, retorno y promedio del mismo, asi como sus getters y setters
+    + InfoFilm: Básicamente tiene información delme como : title, year_movie, popularity, valoraciones, promedio, retorno, fecha_lanzamiento, costo, ganancia    
+    + Films: Es la clase que se encarga de toda la lógica de las operaciones, a si como interactuar entre las classes y el archivo de funciones
+
++ EDA.ipynb
+    Este archivo, tiene la logica que se siguio para las recomendaciones, que datos fueron lo usados, asi como gráficas y compraciones, la limpieza de outliers etc.
+
++ Recommendation.ipynb
+    Básicmanete es una clase que tiene toda la lógica del EDA, solo que esta esta encapsulando los valores y exponiendo métodos, lo que hace más sencillo el consumo de la clase por el API
+
++ main.py
+    Este archivo py tiene la integración con FastAPI y el del lado a las clases de InfoFilm y Recommendation, expone lo servicios para ser utilizados.
 
 <br/>
 

@@ -25,6 +25,8 @@ def read_item(month: str):
     film = ETL.Films()
     num_films = film.cantidad_filmaciones_mes(month)
     #print("salimos? con el num de films = ",str(num_films))
+    if num_films == "":
+        return "El mes ingresado es incorrecto: Los meses validos puede ser alguno de los siguientes: Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio; Agosto, Septiembre, Octubre, Noviembre, Diciembre"
     output = str(num_films)+" películas fueron estrenadas en el mes de "+month
     return output
 
@@ -32,7 +34,11 @@ def read_item(month: str):
 def read_item(day: str):    
     film = ETL.Films()
     num_films = film.cantidad_filmaciones_dia(day)
-    print("salimos? con el num de films = ",str(num_films))
+    
+    print("num_films: ",num_films)
+    if num_films == -1:
+        return "El día ingresado es incorrecto, los días válidos son: Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo. No usar acentos"
+
     output = str(num_films)+" películas fueron estrenadas en los dias "+day
     return output
 
