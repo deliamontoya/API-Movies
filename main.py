@@ -8,7 +8,7 @@ import Recomendation
 
 app = FastAPI()
 film = ETL.Films()
-rec = Recomendation.Recomention()
+
 
 @app.get("/")
 def read_root():
@@ -67,7 +67,7 @@ def read_item(director_name: str):
 @app.get("/get_recommendations_by_title/{title}")
 def read_item(title: str):    
     print("hola para la recomendaion")
-    #rec = Recomendation.Recomention()
+    rec = Recomendation.Recomention()
     titles = rec.get_recommendations_by_title(title)
     print("titles: ",titles)
     return str(titles)
@@ -75,7 +75,7 @@ def read_item(title: str):
 @app.get("/recommendations/{title}")
 def read_item(title: str):    
     print("hola para la recomendaion: get_recommendations_by_weight")
-    #rec = Recomendation.Recomention()
+    rec = Recomendation.Recomention()
     titles = rec.recommendations(title)
     print("titles: ",titles)
     return str(titles)
@@ -83,7 +83,7 @@ def read_item(title: str):
 @app.get("/get_recommendations_by_words/{title}")
 def read_item(title: str):    
     print("hola para la recomendaion: get_recommendations_by_words")
-    #rec = Recomendation.Recomention()
+    rec = Recomendation.Recomention()
     titles = rec.get_recommendations_by_words(title)
     print("titles: ",titles)
     return str(titles)
