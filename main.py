@@ -75,10 +75,11 @@ def read_item(director_name: str):
 @app.get("/recommendations/{title}")
 def read_item(title: str):    
     print("hola para la recomendaion: get_recommendations_by_weight")
-    rec = Recomendation.Recomention()
-    titles = rec.recommendations(title)
-    print("titles: ",titles)
-    return str(titles)
+    #rec = Recomendation.Recomention()
+    #titles = rec.recommendations(title)
+    #print("titles: ",titles)
+    #return str(titles)
+    return "hola"
 
 #@app.get("/get_recommendations_by_words/{title}")
 #def read_item(title: str):    
