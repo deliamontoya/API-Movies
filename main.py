@@ -7,7 +7,8 @@ import ETL
 import Recomendation
 
 app = FastAPI()
-
+film = ETL.Films()
+rec = Recomendation.Recomention()
 
 @app.get("/")
 def read_root():
@@ -16,13 +17,13 @@ def read_root():
 
 @app.get("/get_actor/{actor_name}")
 def read_item(actor_name: str):    
-    film = ETL.Films()
+    
     actor = film.get_actor(actor_name) 
     return actor.to_string_actor_info()
     
 @app.get("/cantidad_filmaciones_mes/{month}")
 def read_item(month: str):    
-    film = ETL.Films()
+    #film = ETL.Films()
     num_films = film.cantidad_filmaciones_mes(month)
     #print("salimos? con el num de films = ",str(num_films))
     if num_films == "":
@@ -32,7 +33,7 @@ def read_item(month: str):
 
 @app.get("/cantidad_filmaciones_dia/{day}")
 def read_item(day: str):    
-    film = ETL.Films()
+    #film = ETL.Films()
     num_films = film.cantidad_filmaciones_dia(day)
     
     print("num_films: ",num_films)
@@ -44,14 +45,14 @@ def read_item(day: str):
 
 @app.get("/score_titulo/{title}")
 def read_item(title: str):    
-    film = ETL.Films()
+    #film = ETL.Films()
     info_film = film.score_titulo(title)
     print("salimos? con el num de films = ",info_film.to_string())    
     return info_film.to_string()
 
 @app.get("/votos_titulo/{title}")
 def read_item(title: str):    
-    film = ETL.Films()
+    #film = ETL.Films()
     info_film = film.votos_titulo(title)
 
     print("salimos? con el num de films = ",info_film.to_string_votos_titulo())    
@@ -59,14 +60,14 @@ def read_item(title: str):
 
 @app.get("/get_director/{director_name}")
 def read_item(director_name: str):    
-    film = ETL.Films()
+    #film = ETL.Films()
     director = film.get_director(director_name) 
     return director.to_string_info_director()
 
 @app.get("/get_recommendations_by_title/{title}")
 def read_item(title: str):    
     print("hola para la recomendaion")
-    rec = Recomendation.Recomention()
+    #rec = Recomendation.Recomention()
     titles = rec.get_recommendations_by_title(title)
     print("titles: ",titles)
     return str(titles)
@@ -74,7 +75,7 @@ def read_item(title: str):
 @app.get("/recommendations/{title}")
 def read_item(title: str):    
     print("hola para la recomendaion: get_recommendations_by_weight")
-    rec = Recomendation.Recomention()
+    #rec = Recomendation.Recomention()
     titles = rec.recommendations(title)
     print("titles: ",titles)
     return str(titles)
@@ -82,7 +83,7 @@ def read_item(title: str):
 @app.get("/get_recommendations_by_words/{title}")
 def read_item(title: str):    
     print("hola para la recomendaion: get_recommendations_by_words")
-    rec = Recomendation.Recomention()
+    #rec = Recomendation.Recomention()
     titles = rec.get_recommendations_by_words(title)
     print("titles: ",titles)
     return str(titles)
